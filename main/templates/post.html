@@ -5,16 +5,18 @@
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="#">{{ post.author.username }}</a>
-          <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}</small>
-            {% if post.author == current_user %}
-                <div>
-                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
-                    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                </div>
-            {% endif %}
         </div>
         <h2 class="article-title">{{ post.title }}</h2>
         <p class="article-content">{{ post.content }}</p>
+          <dive class="article-metadata">
+              <small class="text-muted">{{ post.date_posted.strftime('%-I:%M %p • %m/%d/%y') }}</small>
+              {% if post.author == current_user %}
+                <div>
+                    <a class="btn btn-outline-secondary btn-sm mt-1 mb-1 float-right" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
+                    <button type="button" class="btn btn-outline-danger btn-sm m-1 float-right" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                </div>
+            {% endif %}
+          </dive>
       </div>
     </article>
 <!-- Modal -->
